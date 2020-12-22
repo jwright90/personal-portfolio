@@ -1,0 +1,45 @@
+{% load static %}
+
+{% include "../base.html" %}
+
+{% block stylesheet%}<link rel="stylesheet" href="{% static '/css/home.css'%}">{%endblock stylesheet%}
+
+
+<div class="main-container">
+    <div class="nav-container">
+        <nav>
+            <h3>Jason Wright</h3>
+            <h6>Web developer</h6>
+            <img src="{% static '/images/cork-board.jpg' %}" class="cork-board">
+            <img src="{% static '/images/professional_400px.png'%}" class="profile">
+            <a href="/">Home</a>
+            <a href="/">About</a>
+            <a href="#">Work</a>
+            <a href="#">Contact</a>
+            <div class="social-icons">
+                <a href="#"><i class="fab fa-linkedin"></i> </a>
+                <a href="#"><i class="fab fa-github-square"></i></a>
+            </div>
+        </nav>
+    </div>
+
+    <div class="page-container">
+        <div class="section-container">
+            <h1>Recent Projects</h1>
+            <div class="projects-container">
+            </div>
+        </div>
+
+        <div class="section-container">
+            <h1>About</h1>
+        </div>
+
+        <div class="section-container">
+            <h1>Work</h1>
+        </div>
+
+        <div class="section-container">
+            <h1>Contact</h1>
+        </div>
+    </div>
+</div>
