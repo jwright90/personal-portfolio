@@ -4,6 +4,8 @@
 
 
 :root {
+    --desktop: 1440px;
+
     --off-white: #D2D2D4;
 
     --cyan-1: #6898A2;
@@ -26,13 +28,15 @@
     --cyan-4: #879CAA;
     --slate-4: #666676;
     
-
     --nav-width: 350px;
+
+    --josefin: 'Josefin Slab', sans-serif;
 
 }
 
 p, h1, h2, h3, h4, h5, h6 {
     color: var(--dark-blue-1);
+    font-family: 'Open Sans', sans-serif;
 }
 
 h1 {
@@ -72,7 +76,7 @@ nav {
 nav img {
     width: 300px;
     border: 3px solid var(--off-white);
-    margin: 15px;
+    margin: 15px 20px;
     box-shadow: 2px 2px 5px 5px grey;
 }
 
@@ -136,6 +140,11 @@ nav .social-icons {
 
 .social-icons a {
     display: inline;
+    margin: 0 5px;
+}
+
+.fa-hackerrank {
+    margin: 0 -1px;
 }
 
 nav h6 {
@@ -145,15 +154,15 @@ nav h6 {
 
 .page-container {
     height: 100%;
-    min-width: 1200px;
+    min-width: var(--desktop);
     width: 100%;
     float: right;
 }
 
 .section-container {
-    padding: 58px 40px 0px;
+    padding: 55px 40px 0px;
     margin-left: var(--nav-width);
-    height: calc(100vh - 58px);
+    height: calc(100vh - 55px);
 }
 
 .section-container:nth-child(odd) {
@@ -165,9 +174,46 @@ nav h6 {
 }
 
 .projects-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 15px;
+    padding: 20px;
     width: 95%;
-    height: 80%;
+    height: 75%;
     background-color: #E4DFD7;
-    box-shadow: 5px 5px var(--slate-3);
     border-radius: 10px;
+}
+
+.project {
+    margin: 15px;
+    background-color: var(--light-white-4);
+    border-radius: 10px;
+    box-shadow: 5px 5px var(--slate-3);
+}
+
+.project-gif {
+    height: 50%;
+    border-bottom: 2px dotted var(--light-slate-3);
+}
+
+.project-header {
+    margin: 15px;
+    font-family: var(--josefin);
+    font-size: 1.75em;
+    font-weight: 700;
+}
+
+.project-content {
+    margin: 15px;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 400;
+}
+
+/* About section */
+.about-description {
+    width: 35%;
+}
+
+.about-graphic {
+    width: 65%;
 }

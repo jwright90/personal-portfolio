@@ -17,8 +17,9 @@
             <a href="#">Work</a>
             <a href="#">Contact</a>
             <div class="social-icons">
-                <a href="#"><i class="fab fa-linkedin"></i> </a>
+                <a href="#"><i class="fab fa-linkedin"></i></a>
                 <a href="#"><i class="fab fa-github-square"></i></a>
+                <a href="#"><i class="fab fa-hackerrank"></i></a>
             </div>
         </nav>
     </div>
@@ -27,11 +28,27 @@
         <div class="section-container">
             <h1>Recent Projects</h1>
             <div class="projects-container">
+            {% for project in projects|slice:"0:3" %}
+                <div class="project">
+                    <div class="project-gif"></div>
+                    <div class="project-header">{{project.project_name|title}}</div>
+                    <div class="project-content">{{project.project_description}}</div>
+                </div>
+            {% endfor %}
             </div>
+
         </div>
 
         <div class="section-container">
             <h1>About</h1>
+            <div class="about-description">
+                <p> I'm a self-taught web developer with experience in HTML5, CSS3, Javascript and Python.</p>
+                <p> I learned how to code because I love solving problems and exercising my creativity.</p>
+                <p> Prior to learning how to code, I was a part-qualified management accountant.
+                    I would like to use my experience to produce web apps that serve the finance function within small companies.</p>
+            </div>
+            <div class="about-graphic">
+            </div>
         </div>
 
         <div class="section-container">
