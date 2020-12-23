@@ -1,21 +1,22 @@
 {% load static %}
-
 {% include "../base.html" %}
-
 {% block stylesheet%}<link rel="stylesheet" href="{% static '/css/home.css'%}">{%endblock stylesheet%}
-
 
 <div class="main-container">
     <div class="nav-container">
         <nav>
-            <h3>Jason Wright</h3>
-            <h6>Web developer</h6>
+            <div class="link-container">
+                <h3>Jason Wright</h3>
+                <h6>Web developer</h6>
+            </div>
             <img src="{% static '/images/cork-board.jpg' %}" class="cork-board">
             <img src="{% static '/images/professional_400px.png'%}" class="profile">
-            <a href="/">Home</a>
-            <a href="/">About</a>
-            <a href="#">Work</a>
-            <a href="#">Contact</a>
+            <div class="link-container">
+                <a href="/">Home</a>
+                <a href="/">About</a>
+                <a href="#">Work</a>
+                <a href="#">Contact</a>
+            </div>
             <div class="social-icons">
                 <a href="#"><i class="fab fa-linkedin"></i></a>
                 <a href="#"><i class="fab fa-github-square"></i></a>
@@ -30,29 +31,52 @@
             <div class="projects-container">
             {% for project in projects|slice:"0:3" %}
                 <div class="project">
-                    <div class="project-gif"></div>
-                    <div class="project-header">{{project.project_name|title}}</div>
-                    <div class="project-content">{{project.project_description}}</div>
+                    <div class="project-img-container"><img src="/media/{{project.project_img}}" alt="project image" class="project-img"></div>
+                    <div class="project-content">
+                        <div class="project-header">{{project.project_name}}</div>
+                        <div class="project-text">{{project.project_description|linebreaks}}</div>
+                        <div class="project-tags"><p>Tag 1 | Tag 2 | Tag 3</p></div>
+                    </div>
                 </div>
             {% endfor %}
             </div>
-
         </div>
 
-        <div class="section-container">
-            <h1>About</h1>
+        <div class="section-container about-container">
             <div class="about-description">
+                <h1>About</h1>
                 <p> I'm a self-taught web developer with experience in HTML5, CSS3, Javascript and Python.</p>
                 <p> I learned how to code because I love solving problems and exercising my creativity.</p>
-                <p> Prior to learning how to code, I was a part-qualified management accountant.
-                    I would like to use my experience to produce web apps that serve the finance function within small companies.</p>
+                <p> Previously, I was a part-qualified management accountant.
+                    I'd like to use my experience to produce web apps for SME finance teams.</p>
             </div>
             <div class="about-graphic">
+                <h1>Skills</h1>
             </div>
         </div>
 
         <div class="section-container">
             <h1>Work</h1>
+            <div class="work-container">
+                <div class="work work-list">
+                    <table>
+                    <tr>
+                        <th>Project</th>
+                        <th>Tags</th>
+                    </tr>
+                        {% for project in projects %}
+                            <tr>
+                                <td>
+                                    <a href="{{project.project_url}}">{{project.project_name}}</a>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </table>
+                </div>
+                <div class="work work-preview">
+                    <h3>Preview</h3>
+                </div>
+            </div>
         </div>
 
         <div class="section-container">

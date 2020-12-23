@@ -6,6 +6,11 @@
 :root {
     --desktop: 1440px;
 
+    --nav-width: 350px;
+    --min-height: 700px;
+
+    --josefin: 'Josefin Slab', sans-serif;
+
     --off-white: #D2D2D4;
 
     --cyan-1: #6898A2;
@@ -27,16 +32,15 @@
     --salmon-4: #EA8592;
     --cyan-4: #879CAA;
     --slate-4: #666676;
-    
-    --nav-width: 350px;
-
-    --josefin: 'Josefin Slab', sans-serif;
-
 }
 
-p, h1, h2, h3, h4, h5, h6 {
+p, h1, h2, h3, h4, h5, h6, a, table{
     color: var(--dark-blue-1);
     font-family: 'Open Sans', sans-serif;
+}
+
+a {
+    color: var(--cyan-1);
 }
 
 h1 {
@@ -51,20 +55,19 @@ h1 {
 }
 
 .nav-container {
-    position: relative;
+    position: fixed;
     display: flex;
-    height: 100vh;
+    height: calc(100vh - 40px);
+    padding-top: 40px;
     width: var(--nav-width);
     background-color: var(--off-white);
     background-image: url('../images/joe-woods-4Zaq5xY5M_c-unsplash.jpg');
     background-repeat: no-repeat;
     background-size: cover;
-    align-items: center;
     justify-content: center;
     z-index: 1;
     overflow-x: hidden;
-    position: fixed;
- }
+}
 
 nav {
     position: relative;
@@ -96,17 +99,24 @@ nav img.profile {
     border-radius: 5px;
 }
 
+nav .link-container {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
 nav a, h3, h6 {
     color: var(--dark-blue-1);
     font-size: 2em;
     margin-top: 10px;
     margin-bottom: 10px;
-    position: relative;
-    display: flex;
-    text-align: middle;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
+    text-align: center;
+    width: fit-content;
+
     text-decoration: none;
     text-transform: uppercase;
     font-family: 'Fredericka the Great', sans-serif;
@@ -160,9 +170,11 @@ nav h6 {
 }
 
 .section-container {
-    padding: 55px 40px 0px;
+    padding: 40px 40px 0px;
     margin-left: var(--nav-width);
-    height: calc(100vh - 55px);
+    height: calc(100vh - 40px);
+    min-height: var(--min-height);
+    overflow: hidden;
 }
 
 .section-container:nth-child(odd) {
@@ -182,38 +194,113 @@ nav h6 {
     height: 75%;
     background-color: #E4DFD7;
     border-radius: 10px;
+    min-height: 500px;
+    overflow: hidden;
 }
 
 .project {
+    font-size: 14px;
     margin: 15px;
     background-color: var(--light-white-4);
     border-radius: 10px;
     box-shadow: 5px 5px var(--slate-3);
+    overflow: hidden;
 }
 
-.project-gif {
+.project-img-container {
+    display: flex;
     height: 50%;
-    border-bottom: 2px dotted var(--light-slate-3);
+    justify-content: center;
+}
+
+.project-img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+.project-content {
+    height: 50%;
+    display: flex;
+    flex-wrap: wrap;
 }
 
 .project-header {
-    margin: 15px;
+    margin: 15px 10px 0;
     font-family: var(--josefin);
     font-size: 1.75em;
     font-weight: 700;
 }
 
-.project-content {
-    margin: 15px;
+.project-text, .project-tags {
+    margin: 0 10px;
     font-family: 'Open Sans', sans-serif;
     font-weight: 400;
 }
 
+.project-text {
+    width: 100%;
+    overflow: hidden;
+    padding: 0;
+}
+
+.project-tags {
+    align-self: flex-end;
+    min-height: 20px;
+}
+
 /* About section */
+.about-container {
+    display: flex;
+}
+
 .about-description {
     width: 35%;
+    padding: 0 10px;
 }
 
 .about-graphic {
     width: 65%;
+    padding: 0 30px;
+}
+
+/* Work section */
+
+table {
+    width: 100%;
+    text-align: left;
+}
+
+th {
+    padding-bottom: 10px;
+}
+
+.work-container {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    grid-gap: 15px;
+    padding: 20px;
+    width: 95%;
+    height: 75%;
+    background-color: #E4DFD7;
+    border-radius: 10px;
+}
+
+.work {
+    margin: 15px;
+    padding: 15px 25px;
+    background-color: var(--light-white-4);
+    border-radius: 10px;
+    box-shadow: 5px 5px var(--slate-3);
+}
+
+.work a {
+    width: fit-content;
+}
+
+.work h3 {
+    font-size: 1em;
+    font-family: 'Open Sans', sans-serif;
+    text-transform: none;
+    margin-top: 5px;
 }
