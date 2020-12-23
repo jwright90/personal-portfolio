@@ -245,8 +245,28 @@ nav h6 {
 }
 
 .project-tags {
+    display: inline-flex;
     align-self: flex-end;
     min-height: 20px;
+}
+
+.tag {
+    padding: 4px 8px;
+    margin-right: 5px;
+    font-size: 12px;
+    font-weight: 400;
+    border-radius: 5px;
+    font-family: 'Open Sans' sans-serif;
+    color: var(--light-white-4);
+    background-color: var(--slate-4);
+}
+
+.tag.django {
+    background-color: var(--violet-2);
+}
+
+.tag.js {
+    background-color: var(--mustard-2);
 }
 
 /* About section */
