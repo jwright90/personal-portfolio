@@ -34,7 +34,7 @@
     --slate-4: #666676;
 }
 
-p, h1, h2, h3, h4, h5, h6, a, table{
+p, h1, h2, h3, h4, h5, h6, a, table, ul, li, form{
     color: var(--dark-blue-1);
     font-family: 'Open Sans', sans-serif;
 }
@@ -44,7 +44,7 @@ a {
 }
 
 h1 {
-    font-family: 'Fredericka the Great','Josefin Slab', 'Open Sans';
+    font-family: 'Fredericka the Great', 'Open Sans';
     font-weight: 700;
 }
 
@@ -270,23 +270,89 @@ nav h6 {
     background-color: var(--mustard-2);
 }
 
+.tag.tutorial {
+    background-color: var(--light-brown-1);
+}
+
+.tag.self {
+    background-color: var(--cyan-1);
+}
+
 /* About section */
 .about-container {
     display: flex;
 }
 
+.about-container h6 {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+}
+
 .about-description {
+    position: relative;
     width: 35%;
     padding: 0 10px;
+    margin-bottom: 20px;
+}
+
+.about-learning {
+    position: absolute;
+    bottom: 40px;
 }
 
 .about-graphic {
+    position: relative;
     width: 65%;
     padding: 0 30px;
+    margin-bottom: 20px;
+}
+
+.skill-container, .html-skill, .css-skill, .js-skill, .python-skill {
+    border-radius: 5px;
+}
+
+.skill-container {
+    width: 100%;
+    background-color: var(--off-white);
+}
+
+.skills {
+    text-align: right;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 14px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    padding-right: 10px;
+    color: var(--light-white-4);
+}
+
+.html-skill {
+    width: 65%; 
+    background-color: var(--green-3);
+}
+
+.css-skill {
+    width: 70%;
+    background-color: var(--cyan-1);
+}
+
+.js-skill {
+    width: 25%;
+    background-color: var(--mustard-2);
+}
+
+.python-skill {
+    width: 40%;
+    background-color: var(--violet-2);
+}
+
+.other-skills {
+    position: absolute;
+    bottom: 40px;
 }
 
 /* Work section */
-
 table {
     width: 100%;
     text-align: left;
@@ -294,6 +360,20 @@ table {
 
 th {
     padding-bottom: 10px;
+}
+
+tr {
+    height: 30px;
+}
+
+tr:hover td:nth-child(1) {
+    background: var(--off-white);
+    transition: all 0.2s;
+    border-radius: 5px;
+}
+
+tr:hover a {
+    text-decoration: underline;
 }
 
 .work-container {
@@ -317,6 +397,7 @@ th {
 
 .work a {
     width: fit-content;
+    text-decoration: none;
 }
 
 .work h3 {
@@ -324,4 +405,55 @@ th {
     font-family: 'Open Sans', sans-serif;
     text-transform: none;
     margin-top: 5px;
+}
+
+p.work-tag {
+    display: inline;
+    margin: 0 5px;
+}
+
+/* Contact section */
+
+.contact-container {
+    position: relative;
+}
+
+.contact-container h1 {
+    padding-top: 6px;
+}
+
+input[type=text], select, textarea{
+    font-family: 'Open Sans', sans-serif;
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    resize: vertical;
+}
+
+label {
+    padding: 12px 12px 12px 0;
+    display: inline-block;
+}
+
+input[type=submit] {
+    margin-top: 15px;
+    background-color: var(--green-3);
+    text-transform: uppercase;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.2s;
+    position: absolute;
+    bottom: 60px;
+}
+
+.contact-form-container {
+    width: 63%;
+    padding-top: 20px;
+    border-radius: 5px;
+    background-color: var(--light-white-4);
 }

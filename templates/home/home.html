@@ -7,7 +7,7 @@
         <nav>
             <div class="link-container">
                 <h3>Jason Wright</h3>
-                <h6>Web developer</h6>
+                <h6>Web Developer</h6>
             </div>
             <img src="{% static '/images/cork-board.jpg' %}" class="cork-board">
             <img src="{% static '/images/professional_400px.png'%}" class="profile">
@@ -27,7 +27,7 @@
 
     <div class="page-container">
         <div class="section-container">
-            <h1>Recent Projects</h1>
+            <h1>Project Highlights</h1>
             <div class="projects-container">
             {% for project in projects|slice:"0:3" %}
                 <div class="project">
@@ -51,9 +51,44 @@
                 <p> I learned how to code because I love solving problems and exercising my creativity.</p>
                 <p> Previously, I was a part-qualified management accountant.
                     I'd like to use my experience to produce web apps for SME finance teams.</p>
+                
+                <div class="about-learning">
+                    <h6>Currently Learning</h6>
+                    <p> As of 23rd Dec 2020, my plan is to follow a few more Django tutorials and work on some of my own projects.
+                        After I'm done with this I'll be learning React.
+                    </p>
+                </div>
             </div>
             <div class="about-graphic">
                 <h1>Skills</h1>
+                    <p>HTML</p>
+                        <div class="skill-container">
+                        <div class="skills html-skill">65%</div>
+                    </div>
+
+                    <p>CSS</p>
+                        <div class="skill-container">
+                        <div class="skills css-skill">70%</div>
+                    </div>
+
+                    <p>JavaScript</p>
+                        <div class="skill-container">
+                        <div class="skills js-skill">25%</div>
+                    </div>
+
+                    <p>Python</p>
+                        <div class="skill-container">
+                        <div class="skills python-skill">50%</div>
+                    </div>
+                <div class="other-skills">
+                    <h6>Other</h6>
+                    <ul>
+                        <li>Github</li>
+                        <li>Heroku</li>
+                        <li>Linux / Windows CLI</li>
+                        <li>Visual Studio Code</li>
+                    </ul>
+                </div>
             </div>
         </div>
 
@@ -63,16 +98,19 @@
                 <div class="work work-list">
                     <table>
                     <tr>
-                        <th>Project</th>
+                        <th>Projects</th>
                         <th>Tags</th>
                     </tr>
-                        {% for project in projects %}
-                            <tr>
-                                <td>
-                                    <a href="{{project.project_url}}">{{project.project_name}}</a>
-                                </td>
-                            </tr>
-                        {% endfor %}
+                    {% for project in projects %}
+                        <tr>
+                            <td>
+                                <a href="{{project.project_url}}">{{project.project_name}}</a>
+                            </td>
+                            <td>
+                                {% for tag in project.tags.values %}<p class="tag work-tag {{tag.tag_name}}">{{tag.tag_name}}</p>{% endfor %}
+                            </td>
+                        </tr>
+                    {% endfor %}
                     </table>
                 </div>
                 <div class="work work-preview">
@@ -81,8 +119,39 @@
             </div>
         </div>
 
-        <div class="section-container">
+        <div class="section-container contact-container">
             <h1>Contact</h1>
+            <div class="contact-form-container">
+                <form action="">
+                    <div class="row">
+                    <div class="col-25">
+                        <label for="name">Name</label>
+                    </div>
+                    <div class="col-75">
+                        <input type="text" id="name" name="name" placeholder="Name">
+                    </div>
+                    </div>
+                    <div class="row">
+                    <div class="col-25">
+                        <label for="Email">Email</label>
+                    </div>
+                    <div class="col-75">
+                        <input type="text" id="Email" name="Email" placeholder="Email">
+                    </div>
+                    </div>
+                    <div class="row">
+                    <div class="col-25">
+                        <label for="message">Message</label>
+                    </div>
+                    <div class="col-75">
+                        <textarea id="message" name="message" placeholder="Your message" style="height:200px"></textarea>
+                    </div>
+                    </div>
+                    <div class="row">
+                    <input type="submit" value="Submit">
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
 </div>
