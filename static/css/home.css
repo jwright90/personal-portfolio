@@ -44,7 +44,7 @@ a {
 }
 
 h1 {
-    font-family: 'Josefin Slab', 'Open Sans';
+    font-family: 'Fredericka the Great','Josefin Slab', 'Open Sans';
     font-weight: 700;
 }
 
@@ -170,9 +170,9 @@ nav h6 {
 }
 
 .section-container {
-    padding: 40px 40px 0px;
+    padding: 30px 40px 0px;
     margin-left: var(--nav-width);
-    height: calc(100vh - 40px);
+    height: calc(100vh - 30px);
     min-height: var(--min-height);
     overflow: hidden;
 }
@@ -233,18 +233,19 @@ nav h6 {
 }
 
 .project-text, .project-tags {
-    margin: 0 10px;
     font-family: 'Open Sans', sans-serif;
     font-weight: 400;
 }
 
 .project-text {
+    margin: 0 10px;
     width: 100%;
     overflow: hidden;
     padding: 0;
 }
 
 .project-tags {
+    margin-left: 10px;
     display: inline-flex;
     align-self: flex-end;
     min-height: 20px;
@@ -252,13 +253,13 @@ nav h6 {
 
 .tag {
     padding: 4px 8px;
-    margin-right: 5px;
     font-size: 12px;
-    font-weight: 400;
+    font-weight: 700;
     border-radius: 5px;
     font-family: 'Open Sans' sans-serif;
     color: var(--light-white-4);
     background-color: var(--slate-4);
+    text-transform: uppercase;
 }
 
 .tag.django {

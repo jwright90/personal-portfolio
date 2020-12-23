@@ -1,6 +1,5 @@
 from django.shortcuts import render
-from . models import Project
-from PIL import Image
+from . models import Project, Tag
 
 # Create your views here.
 def home(request):

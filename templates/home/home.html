@@ -35,7 +35,9 @@
                     <div class="project-content">
                         <div class="project-header">{{project.project_name}}</div>
                         <div class="project-text">{{project.project_description|linebreaks}}</div>
-                        <div class="project-tags"><p class="tag">Own Project</p> <p class="tag js">JS</p><p class="tag django">Django</p></div>
+                        {% for tag in project.tags.values %}
+                        <div class="project-tags"><p class="tag {{tag.tag_name}}">{{tag.tag_name}}</p></div>
+                        {% endfor %}
                     </div>
                 </div>
             {% endfor %}
