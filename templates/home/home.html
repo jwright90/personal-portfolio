@@ -29,34 +29,37 @@
 
     <div class="page-container">
         <div class="section-container" id="projects-section">
+            <div class="projects-title-container">
             <h1>Project Highlights</h1>
             <button class="project-btn" id="prev-project" type='submit'>Prev</button>
             <button class="project-btn" id="next-project" type='submit'>Next</button>
-            <div class="projects-container">
-            <!--    JS to add python tags immediately after div with class "project-container" 
-                    adjust slice values?
-            -->
-            {% for project in projects|slice:"0:1" %}
-                <div class="project">
-                    <div class="project-content">
-                        <div class="project-header" id="project-header"></div>
-                        <div class="project-text" id="project-description"></div>
-                        <div class="project-tags" id ="project-tags">
-                        <!--
-                        {% for tag in project.tags.values %}
-                            <p class="tag {{tag.tag_name}}"></p>
-                        {% endfor %}
-                        -->
+
+                <div class="projects-container">
+                <!--    JS to add python tags immediately after div with class "project-container" 
+                        adjust slice values?
+                -->
+                {% for project in projects|slice:"0:1" %}
+                    <div class="project">
+                        <div class="project-content">
+                            <div class="project-header" id="project-header"></div>
+                            <div class="project-text" id="project-description"></div>
+                            <div class="project-tags" id ="project-tags">
+                            <!--
+                            {% for tag in project.tags.values %}
+                                <p class="tag {{tag.tag_name}}"></p>
+                            {% endfor %}
+                            -->
+                            </div>
                         </div>
                     </div>
-                </div>
 
-                <div class="project">
-                    <div class="project-img-container">
-                        <img src="" alt="project gif" class="project-img-gif" id="project-img-gif">
+                    <div class="project">
+                        <div class="project-img-container">
+                            <img src="" alt="project gif" class="project-img-gif" id="project-img-gif">
+                        </div>
                     </div>
+                {% endfor %}
                 </div>
-            {% endfor %}
             </div>
         </div>
 
