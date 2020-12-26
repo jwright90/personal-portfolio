@@ -1,12 +1,14 @@
 {% load static %}
 {% include "../base.html" %}
-{% block stylesheet%}<link rel="stylesheet" href="{% static '/css/home.css'%}">{%endblock stylesheet%}
+{% block stylesheet%}
+    <link rel="stylesheet" href="{% static '/css/home.css'%}">
+{%endblock stylesheet%}
 
 <div class="main-container">
     <div class="nav-container">
         <nav>
             <div class="link-container">
-                <h3>Jason Wright</h3>
+                <h1>Jason Wright</h1>
                 <h6>Web Developer</h6>
             </div>
             <img src="{% static '/images/cork-board.jpg' %}" class="cork-board">
@@ -25,19 +27,34 @@
         </nav>
     </div>
 
-    <div class="page-container">
+<div class="page-container">
+
         <div class="section-container">
             <h1>Project Highlights</h1>
+            <button class="project-btn" id="prev-project" type='submit'>Prev</button>
+            <button class="project-btn" id="next-project" type='submit'>Next</button>
             <div class="projects-container">
-            {% for project in projects|slice:"0:3" %}
+            <!--    JS to add python tags immediately after div with class "project-container" 
+                    adjust slice values?
+            -->
+            {% for project in projects|slice:"0:1" %}
                 <div class="project">
-                    <div class="project-img-container"><img src="/media/{{project.project_img}}" alt="project image" class="project-img"></div>
                     <div class="project-content">
-                        <div class="project-header">{{project.project_name}}</div>
-                        <div class="project-text">{{project.project_description|linebreaks}}</div>
+                        <div class="project-header" id="project-header"></div>
+                        <div class="project-text" id="project-description"></div>
+                        <div class="project-tags" id ="project-tags">
+                        <!--
                         {% for tag in project.tags.values %}
-                        <div class="project-tags"><p class="tag {{tag.tag_name}}">{{tag.tag_name}}</p></div>
+                            <p class="tag {{tag.tag_name}}"></p>
                         {% endfor %}
+                        -->
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project">
+                    <div class="project-img-container">
+                        <img src="" alt="project gif" class="project-img-gif" id="project-img-gif">
                     </div>
                 </div>
             {% endfor %}
@@ -73,12 +90,12 @@
 
                     <p>JavaScript</p>
                         <div class="skill-container">
-                        <div class="skills js-skill">25%</div>
+                        <div class="skills js-skill">50%</div>
                     </div>
 
                     <p>Python</p>
                         <div class="skill-container">
-                        <div class="skills python-skill">50%</div>
+                        <div class="skills python-skill">35%</div>
                     </div>
                 <div class="other-skills">
                     <h6>Other</h6>
@@ -124,34 +141,117 @@
             <div class="contact-form-container">
                 <form action="">
                     <div class="row">
-                    <div class="col-25">
+                    <div class="col-2">
                         <label for="name">Name</label>
                     </div>
-                    <div class="col-75">
+                    <div class="col">
                         <input type="text" id="name" name="name" placeholder="Name">
                     </div>
                     </div>
                     <div class="row">
-                    <div class="col-25">
+                    <div class="col-2">
                         <label for="Email">Email</label>
                     </div>
-                    <div class="col-75">
+                    <div class="col">
                         <input type="text" id="Email" name="Email" placeholder="Email">
                     </div>
                     </div>
                     <div class="row">
-                    <div class="col-25">
+                    <div class="col-2">
                         <label for="message">Message</label>
                     </div>
-                    <div class="col-75">
+                    <div class="col">
                         <textarea id="message" name="message" placeholder="Your message" style="height:200px"></textarea>
                     </div>
                     </div>
                     <div class="row">
+                    <div class="col-2"></div>
+                    <div class="col">
                     <input type="submit" value="Submit">
+                    </div>
                     </div>
                 </form>
             </div>
         </div>
     </div>
 </div>
+
+<script>
+let id = 0;
+
+let projectsData = JSON.parse("{{ projects_json|escapejs }}");
+console.log(projectsData[id].fields);
+
+document.getElementById('next-project').addEventListener('click', incrementId);
+document.getElementById('prev-project').addEventListener('click', decrementId);
+
+function loadData(id) {
+    document.getElementById('project-header').innerHTML = projectsData[id].fields.project_name;
+    document.getElementById('project-description').innerHTML = projectsData[id].fields.project_description;
+
+    let projectTags = projectsData[id].fields.tags;
+
+    let tagsData = JSON.parse("{{ tags_json|escapejs }}");
+    console.log(tagsData);
+
+    var tagSearch = [];
+    var tagSearchField = "pk";
+    var tagSearchValues = projectTags;
+
+    for (pk of tagSearchValues ) {
+        for (var i = 0; i < tagsData.length; i++ ) {
+            if (tagsData[i][tagSearchField] == pk ) {
+                tagSearch.push(tagsData[i].fields.tag_name);
+            }
+        }
+    }
+
+    projTagContainer = document.getElementById('project-tags');
+
+    for (tag of tagSearch) {
+        projTagPara = document.createElement('p');
+        projTextNode = document.createTextNode(tag);
+        projTagPara.className = tag.concat(" tag");
+        projTagPara.appendChild(projTextNode);
+        projTagContainer.appendChild(projTagPara);
+    }
+
+    document.getElementById('project-img-gif').src = '/media/'.concat(projectsData[id].fields.project_img_gif)
+}
+
+loadData(id);
+
+function incrementId() {
+    if (id == (projectsData.length - 1)) {
+        id = 0;
+        document.getElementById('project-tags').innerHTML = "";
+        loadData(id);
+        return id;
+    } else {
+        id++;
+        document.getElementById('project-tags').innerHTML = "";
+        loadData(id);
+        return id;
+    }
+}
+
+function decrementId() {
+    if (id == 0) {
+        id = (projectsData.length - 1);
+        document.getElementById('project-tags').innerHTML = "";
+        loadData(id);
+        return id;
+    } else {
+        id--;
+        document.getElementById('project-tags').innerHTML = "";
+        loadData(id);
+        return id;
+    }
+}
+
+</script>
+
+{% block script %} 
+
+{% endblock script %}
+

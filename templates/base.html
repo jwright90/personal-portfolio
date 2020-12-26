@@ -10,6 +10,7 @@
     {% block favicon %} {% endblock favicon %}
     {% block stylesheet %}
         <link rel="stylesheet" href="{% static '/css/style.css'%}">
+        <link rel="stylesheet" href="{% static '/bootstrap-4.0.0/dist/css/bootstrap.min.css'%}">
     {% endblock stylesheet %}
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://kit.fontawesome.com/92efd03253.js" crossorigin="anonymous"></script>
@@ -20,6 +21,8 @@
     {% endblock content %}
 </body>
 
-{% block script %} {%endblock script%}
+<script src="{% static '/bootstrap-4.0.0/dist/js/bootstrap.min.js' %}"></script>
+
+{% block script %}{%endblock script%}
 
 </html>

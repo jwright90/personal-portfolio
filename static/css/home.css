@@ -34,14 +34,14 @@
     --slate-4: #666676;
 }
 
-p, h1, h2, h3, h4, h5, h6, a, table, ul, li, form{
+p, h2, h3, h4, h5, h6, a, table, ul, li, form{
     color: var(--dark-blue-1);
     font-family: 'Open Sans', sans-serif;
 }
 
 a {
     color: var(--cyan-1);
-}
+ }
 
 h1 {
     font-family: 'Fredericka the Great', 'Open Sans';
@@ -57,7 +57,7 @@ h1 {
 .nav-container {
     position: fixed;
     display: flex;
-    height: calc(100vh - 40px);
+    height: 100vh;
     padding-top: 40px;
     width: var(--nav-width);
     background-color: var(--off-white);
@@ -109,7 +109,7 @@ nav .link-container {
     align-items: center;
 }
 
-nav a, h3, h6 {
+nav a, h6 {
     color: var(--dark-blue-1);
     font-size: 2em;
     margin-top: 10px;
@@ -125,6 +125,7 @@ nav a, h3, h6 {
 
 nav a:hover {
     color: var(--cyan-1);
+    text-decoration: none;
     transition: all 0.2s;
     -o-transition: 0.2s;
     -ms-transition: 0.2s;
@@ -170,11 +171,13 @@ nav h6 {
 }
 
 .section-container {
-    padding: 30px 40px 0px;
+    position: relative;
+    padding: 40px 40px 0px;
     margin-left: var(--nav-width);
-    height: calc(100vh - 30px);
+    height: 100vh;
     min-height: var(--min-height);
     overflow: hidden;
+    align-content: center;
 }
 
 .section-container:nth-child(odd) {
@@ -187,11 +190,11 @@ nav h6 {
 
 .projects-container {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 2fr;
     grid-gap: 15px;
+    margin: 15px 0 25px 0;
     padding: 20px;
     width: 95%;
-    height: 75%;
     background-color: #E4DFD7;
     border-radius: 10px;
     min-height: 500px;
@@ -207,27 +210,53 @@ nav h6 {
     overflow: hidden;
 }
 
+.project-btn {
+    border-radius: 5px;
+    border: 2px solid var(--dark-blue-1);
+}
+
 .project-img-container {
+    position: relative;
     display: flex;
-    height: 50%;
+    height: 100%;
     justify-content: center;
 }
 
-.project-img {
+.project-img-static {
     height: 100%;
     width: 100%;
-    object-fit: cover;
+    object-fit: fill;
+    visibility: visible;
+    position: absolute;
+}
+
+.project-img-gif {
+    visibility: visible;
+    height: 100%;
+    width: 100%;
+    object-fit: fill;
+    position: absolute;
+}
+
+.project-img-container:hover .project-img-gif {
+    visibility: visible;
+}
+
+.project-img-container:hover .project-img-static {
+    visibility: hidden;
 }
 
 .project-content {
-    height: 50%;
-    display: flex;
-    flex-wrap: wrap;
+    position: relative;
+    height: 100%;
+    padding: 10px;
 }
 
 .project-header {
-    margin: 15px 10px 0;
     font-family: var(--josefin);
+    margin: 15px 10px 0;
+    width: 100%;
+    height: fit-content;
     font-size: 1.75em;
     font-weight: 700;
 }
@@ -239,20 +268,19 @@ nav h6 {
 
 .project-text {
     margin: 0 10px;
-    width: 100%;
     overflow: hidden;
-    padding: 0;
 }
 
 .project-tags {
+    position: absolute;
+    bottom: 5px;
+    display: flex;
     margin-left: 10px;
-    display: inline-flex;
-    align-self: flex-end;
-    min-height: 20px;
 }
 
 .tag {
     padding: 4px 8px;
+    margin-right: 8px;
     font-size: 12px;
     font-weight: 700;
     border-radius: 5px;
@@ -338,12 +366,12 @@ nav h6 {
 }
 
 .js-skill {
-    width: 25%;
+    width: 50%;
     background-color: var(--mustard-2);
 }
 
 .python-skill {
-    width: 40%;
+    width: 35%;
     background-color: var(--violet-2);
 }
 
@@ -373,6 +401,7 @@ tr:hover td:nth-child(1) {
 }
 
 tr:hover a {
+    color: var(--cyan-1);
     text-decoration: underline;
 }
 
@@ -447,8 +476,6 @@ input[type=submit] {
     border-radius: 4px;
     cursor: pointer;
     transition: all 0.2s;
-    position: absolute;
-    bottom: 60px;
 }
 
 .contact-form-container {
