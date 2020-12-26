@@ -7,17 +7,17 @@
 <div class="main-container">
     <div class="nav-container">
         <nav>
-            <div class="link-container">
+            <div class="link-container jwright-desktop">
                 <h1>Jason Wright</h1>
                 <h6>Web Developer</h6>
             </div>
             <img src="{% static '/images/cork-board.jpg' %}" class="cork-board">
             <img src="{% static '/images/professional_400px.png'%}" class="profile">
             <div class="link-container">
-                <a href="/">Home</a>
-                <a href="/">About</a>
-                <a href="#">Work</a>
-                <a href="#">Contact</a>
+                <a href="#projects-section">Home</a>
+                <a href="#about-section">About</a>
+                <a href="#work-section">Work</a>
+                <a href="#contact-section">Contact</a>
             </div>
             <div class="social-icons">
                 <a href="#"><i class="fab fa-linkedin"></i></a>
@@ -27,9 +27,8 @@
         </nav>
     </div>
 
-<div class="page-container">
-
-        <div class="section-container">
+    <div class="page-container">
+        <div class="section-container" id="projects-section">
             <h1>Project Highlights</h1>
             <button class="project-btn" id="prev-project" type='submit'>Prev</button>
             <button class="project-btn" id="next-project" type='submit'>Next</button>
@@ -61,7 +60,7 @@
             </div>
         </div>
 
-        <div class="section-container about-container">
+        <div class="section-container about-container" id="about-section">
             <div class="about-description">
                 <h1>About</h1>
                 <p> I'm a self-taught web developer with experience in HTML5, CSS3, Javascript and Python.</p>
@@ -109,7 +108,7 @@
             </div>
         </div>
 
-        <div class="section-container">
+        <div class="section-container" id="work-section">
             <h1>Work</h1>
             <div class="work-container">
                 <div class="work work-list">
@@ -131,12 +130,12 @@
                     </table>
                 </div>
                 <div class="work work-preview">
-                    <h3>Preview</h3>
+                    <p>Preview</p>
                 </div>
             </div>
         </div>
 
-        <div class="section-container contact-container">
+        <div class="section-container contact-container" id="contact-section">
             <h1>Contact</h1>
             <div class="contact-form-container">
                 <form action="">
